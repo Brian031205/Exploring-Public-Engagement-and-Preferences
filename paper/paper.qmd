@@ -127,7 +127,7 @@ traffic_calming_data |>
   labs(x = "Year",
        y = "In favour rate",
        title = "Traffic calming ballot in favour rate from 2015 to 2023",
-       caption = "Figure 4: Traffic calming ballot in favour rate from 2015 to 2023") +
+       caption = "Figure 1: Traffic calming ballot in favour rate from 2015 to 2023") +
   geom_point() + 
   theme_minimal()
 ```
@@ -155,7 +155,7 @@ traffic_calming_data |>
   labs(x = "Year",
        y = "In favour rate",
        title = "Traffic calming ballot in favour rate from 2015 to 2023",
-       caption = "Figure 4: Traffic calming ballot in favour rate from 2015 to 2023") +
+       caption = "Figure 2: Traffic calming ballot in favour rate from 2015 to 2023") +
   geom_point() + 
      geom_smooth(
     method = "lm",
@@ -193,7 +193,7 @@ traffic_calming_data |>
   labs(x = "Year",
        y = "Ballot return rate",
        title = "Traffic calming ballot return rate from 2015 to 2023",
-       caption = "Figure 4: Traffic calming ballot return rate from 2015 to 2023") +
+       caption = "Figure 3: Traffic calming ballot return rate from 2015 to 2023") +
   geom_point() + 
     geom_smooth(
     method = "lm",
@@ -218,7 +218,7 @@ head(traffic_calming_data, 9) |>
   ) 
 
 ```
-able 3 presents the sample data for the return rates of traffic calming polls from 2015 to 2023. Each row corresponds to a specific year, and the associated return rate indicates the proportion of ballots returned out of the total distributed during that year. In 2015, the return rate was 0.5617, meaning that approximately 56.17% of the distributed ballots were returned. The subsequent rows show similar return rate values for each respective year. These figures provide insights into the community's engagement and participation in the traffic calming polls over the specified time period, reflecting the level of interest or responsiveness of the residents to the survey requests in different years.
+Table 3 presents the sample data for the return rates of traffic calming polls from 2015 to 2023. Each row corresponds to a specific year, and the associated return rate indicates the proportion of ballots returned out of the total distributed during that year. In 2015, the return rate was 0.5617, meaning that approximately 56.17% of the distributed ballots were returned. The subsequent rows show similar return rate values for each respective year. These figures provide insights into the community's engagement and participation in the traffic calming polls over the specified time period, reflecting the level of interest or responsiveness of the residents to the survey requests in different years.
 
 Figure 3 illustrates a scatter plot based on the data presented in Table 3, depicting the relationship between the years (ranging from 2015 to 2023) and the corresponding return rates of traffic calming polls. The scatter plot visually represents each year's return rate as a data point on the graph. Additionally, a negative linear regression model has been fitted to the data points, suggesting a decreasing trend in the return rates over the specified time period.
 
@@ -237,3 +237,15 @@ In conclusion, the research highlights a complex relationship between increasing
 
 {{< pagebreak >}}
 ## References{.unnumbered}
+
+Arel-Bundock, Vincent. 2022. “modelsummary: Data and Model Summaries in R.” Journal of Statistical Software 103 (1): 1–23. https://doi.org/10.18637/jss.v103.i01.
+
+Butler, Peter. 2007. Polling and Public Opinion: A Canadian Perspective. Published by University of Toronto Press. P. 256. https://www.jstor.org/stable/10.3138/9781442685482.
+
+Goodrich, Ben, Jonah Gabry, Imad Ali, and Sam Brilleman. 2023. “rstanarm: Bayesian applied regression modeling via Stan.” https://mc-stan.org/rstanarm.
+
+Ostad-Ali-Askari，2021. The Role of Public Participation in Promoting UrbanPlanning https://www.researchgate.net/publication/351714293_The_Role_of_Public_Participation_in_Promoting_Urban_Planning
+
+Toronto city government. PW3.7-Polling for Front Yard Parking—Staff Report, https://www.toronto.ca/legdocs/mmis/2011/pw/bgrd/backgroundfile-37201.pdf.
+
+
