@@ -244,8 +244,5 @@ Butler, Peter. 2007. Polling and Public Opinion: A Canadian Perspective. Publish
 
 Goodrich, Ben, Jonah Gabry, Imad Ali, and Sam Brilleman. 2023. “rstanarm: Bayesian applied regression modeling via Stan.” https://mc-stan.org/rstanarm.
 
-Ostad-Ali-Askari，2021. The Role of Public Participation in Promoting UrbanPlanning https://www.researchgate.net/publication/351714293_The_Role_of_Public_Participation_in_Promoting_Urban_Planning
-
-Toronto city government. PW3.7-Polling for Front Yard Parking—Staff Report, https://www.toronto.ca/legdocs/mmis/2011/pw/bgrd/backgroundfile-37201.pdf.
 
 
