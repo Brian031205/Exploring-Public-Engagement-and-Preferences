@@ -5,9 +5,9 @@ This paper explores how people in Toronto get involved in city decisions through
 
 ## File Structure
 The repo is structured as:
-data contains the raw data and cleaned data
-paper contains the Quarto document and reference bibliography file, as well as the PDF of the paper.
-scripts contain the R scripts used to simulate, download, clean, and test data.
-model contains the model used in this paper.
+-   `data` contains the raw data and cleaned data
+-   `paper` contains the Quarto document and reference bibliography file, as well as the PDF of the paper.
+-   `scripts` contain the R scripts used to simulate, download, clean, and test data.
+-   `model` contains the model used in this paper.
 # LLMs
 ## I did not use LLMs.
