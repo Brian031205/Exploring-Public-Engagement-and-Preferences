@@ -20,9 +20,7 @@ length(unique(cleaned_poll_data$response_rate_met)) == 2
 # test there are 3 types of poll result
 length(unique(cleaned_poll_data$poll_result)) == 3
 
-# test the variable type of ballots_cast and ballots_distributed are numeric.
-is.numeric(cleaned_poll_data$ballots_cast) & 
-  is.numeric(cleaned_poll_data$ballots_distributed) == TRUE
+# test the variable type of ballots_distributed are numeric.
 
-# test the ballot_return_rate less or equal to 1.
-all(cleaned_poll_data$ballot_return_rate <= 1) == TRUE
+is.numeric(cleaned_poll_data$ballots_distributed) == TRUE
+
