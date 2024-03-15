@@ -1,7 +1,7 @@
 #### Preamble ####
 # Purpose: Simulate the scenario: Support for a political party is a binary (yes/no), and is related to age-group, gender, income group, and highest education.
 # Author: Bolin Shen
-# Date: 28 February 2024
+# Date: March 3 2024
 
 
 #### Workspace setup ####

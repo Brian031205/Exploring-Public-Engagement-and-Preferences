@@ -1,7 +1,7 @@
 #### Preamble ####
 # Purpose: Cleans the raw poll data
 # Author: Bolin Shen
-# Date: 21 January 2024
+# Date: March 3 2024
 # Contact: bolin.shen@mail.utoronto.ca
 # License: MIT
 

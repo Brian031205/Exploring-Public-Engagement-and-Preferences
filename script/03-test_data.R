@@ -1,13 +1,20 @@
 #### Preamble ####
-# Purpose: Test the dataset of polls conducted by the city of Toronto
+# Purpose: Test the cleaned dataset to verify that the data works as expected.
 # Author: Bolin Shen
-# Date: 21 January 2024
+# Date: March 3 2024
 # Contact: bolin.shen@mail.utoronto.ca
 # License: MIT
 
 
 #### Workspace setup ####
 library(tidyverse)
+library(here)
+
+#### Read data ####
+cleaned_poll_data = read_csv(
+  file = here("data/cleaned_poll_data.csv"),
+  show_col_types = FALSE
+)
 
 #### Start testing ####
 

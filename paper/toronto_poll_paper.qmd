@@ -3,14 +3,13 @@ title: "Exploring Public Engagement and Preferences: Trends in Traffic-Calming S
 author: "Bolin Shen"
 date: "March 2, 2024"
 date-format: "long" 
-abstract: "This paper explores how people in Toronto get involved in city decisions through yearly surveys by the City Clerk's Office from 2015 to 2023. It looks at various topics like Front Yard Parking, Traffic Calming, Permit Parking Removal, and more, with a special focus on how support for traffic calming and ballot return rates have changed over time. While the community's support for traffic calming has been going up in a positive way, there's an unexpected decrease in the number of returned ballots, making the study more interesting. This paper aims to find out what might be causing this situation, giving insights into how the public engages with city matters and what they prefer."
+abstract: "Public engagement plays an important role in shaping urban policies, particularly in large cities like Toronto. This paper examines trends in public support for traffic calming measures and ballot return rates based on annual city polls conducted from 2015 to 2023. Utilizing data from the Open Data Toronto Portal, the study explores the community engagement and its implications for policy decisions. Analysis reveals a positive linear trend in the favorability of traffic calming measures over the years, indicating growing support within the community. However, a decline is observed in ballot return rates during the same period, suggesting lacking participation in the polling process. The contrasting trends highlights the need for innovative approaches to sustain community engagement in decision-making processes. This research reflects the complex interplay between public satisfaction with implemented measures and sustained community engagement, emphasizing the importance of aligning regulatory decisions with community preferences and satisfaction in urban policymaking. Future studies should investigate deeper into the specific variables influencing these trends and explore strategies to enhance and maintain community participation in shaping local policies."
 thanks: "Code and data supporting this analysis is available at: https://github.com/Brian031205/Exploring-Public-Engagement-and-Preferences"
 format: pdf
 toc: true
 number-sections: true
 bibliography: ref.bib
 ---
-
 
 ```{r}
 #| message: false
@@ -41,14 +40,14 @@ summarized_poll_data = read_csv(
 
 {{< pagebreak >}}
 ## Introduction
-In big cities like Toronto, getting people involved is crucial for shaping public policies.  The City Clerk's Office is in charge of running surveys for City divisions, gathering thoughts from residents and businesses on various topics governed by City by-law (Chapter 190).  The topics include Front Yard Parking, Boulevard Café, Boulevard improvement area, Traffic calming, Traffic Calming-Island, Traffic calming safety zone, Permit parking, Permit parking removal, Commercial Boulevard Parking, Appeal-Front Yard Parking, Proposed Business improvement.  These surveys aim to engage the community in decision-making, tackle local concerns, and make sure rules meet the needs of Toronto residents and businesses (OpenDateToronto, 2023).
+In big cities like Toronto, getting people involved is crucial for shaping public policies.  The City Clerk's Office is in charge of running surveys for City divisions, gathering thoughts from residents and businesses on various topics governed by City by-law (Chapter 190).  The topics include Front Yard Parking, Boulevard Café, Boulevard improvement area, Traffic calming, Traffic Calming-Island, Traffic calming safety zone, Permit parking, Permit parking removal, Commercial Boulevard Parking, Appeal-Front Yard Parking, Proposed Business improvement.  These surveys aim to engage the community in decision-making, tackle local concerns, and make sure rules meet the needs of Toronto residents and businesses [@rOpenDateToronto].
 
-According to the “Polls Regarding Changes in a Neighborhood” on the city government's website, Toronto conducts yearly surveys to understand the views of property owners, residents, and businesses affected by neighborhood changes, like front yard parking and traffic calming (TorontoCityGovernment, 2023).  Whenever there's a proposal, the city polls people in the area.  For a poll to be favorable, it must meet specific requirements in by-laws or city policies.  A positive result lets the proposal move forward, and final approval may come from the City Council, depending on the poll type (TorontoCityGovernment, 2023).
+According to the “Polls Regarding Changes in a Neighborhood” on the city government's website, Toronto conducts yearly surveys to understand the views of property owners, residents, and businesses affected by neighborhood changes, like front yard parking and traffic calming [@TorontoCityGovernment2023].  Whenever there's a proposal, the city polls people in the area.  For a poll to be favorable, it must meet specific requirements in by-laws or city policies.  A positive result lets the proposal move forward, and final approval may come from the City Council, depending on the poll type [@TorontoCityGovernment2023].
 
 This paper zeroes in on trends in support for traffic calming and ballot returns, analyzing annual city polls from 2015 to 2023.  It aims to give insights into the trends and preferences of public engagement using Toronto's poll data from 2015 to 2023, focusing on in-favor rates of traffic calming and return rates.  Table 1 gives a 2015 sample, showing ballot preferences for topics like Front Yard Parking and Traffic Calming.  Table 2, Figure 1, and Figure 2 display the in-favor rate of traffic calming ballots from 2015 to 2023, revealing a positive linear regression model for the supporting rate of traffic calming over the years.  Table 3 and Figures 3  depict the situation of ballot return rates from 2015 to 2023, demonstrating a negative linear regression model for the ballot return rates over the years.  Finally, I discuss the methodology and analyze the linear models of the support rate of traffic calming and the ballot return rate over the years, as well as the possible effect of the declining ballot return rate on the increasing support rate of traffic calming.
 
 ## Data and Visulization
-The data I used in this paper are obtained from the Open Data Toronto Portal, accessed through the library `opendatatoronto` [@rOpenDataToronto]. The dataset, which covers polls conducted by the city from 2015, was first cleaned before analyzing by the open-source statistical programming language R [@r], using functionalities from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `janitor` [@rJanitor] and `knitr` [@rKnitr].
+The data I used in this paper are obtained from the Open Data Toronto Portal, accessed through the library `opendatatoronto` [@rOpenDataToronto]. The dataset, which covers polls conducted by the city from 2015, was first cleaned before analyzing by the open-source statistical programming language R [@r], using functionalities from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `modelsummary` [@rModelsummary], `here` [@citehere], `janitor` [@rJanitor] and `knitr` [@rKnitr].
 
 ### Sample of Summarized Poll Data
 Table 1 offers a summarized glimpse of poll data from 2015, displaying the number of ballots in favor of various topics. For "Front Yard Parking," 5 out of 9 ballots were in favor. In terms of "Traffic Calming," 2 out of the 9 ballots didn't meet the requirement. "Appeal-Front Yard Parking" got 1 ballot in favor, and "Boulevard Café" earned 1 ballot in favor. This table gives a special overview of preferences and responses for these specific topics during the 2015 poll.
@@ -168,6 +167,20 @@ traffic_calming_data |>
 
 ```
 ### Trends of Ballot Return Rates
+```{r}
+#| echo: false
+#| message: false
+
+# Create a table of sample
+
+head(traffic_calming_data, 9) |>
+  kable(
+    col.names = c("Year", "Ballots Returned", "Ballots Distributed", "Return Rate"),
+    caption = "Sample of traffic calming poll return rate",
+    booktabs = TRUE
+  ) 
+
+```
 
 ```{r}
 #| echo: false
@@ -204,45 +217,32 @@ traffic_calming_data |>
   theme_minimal()
 ```
 
-```{r}
-#| echo: false
-#| message: false
 
-# Create a table of sample
-
-head(traffic_calming_data, 9) |>
-  kable(
-    col.names = c("Year", "Ballots Returned", "Ballots Distributed", "Return Rate"),
-    caption = "Sample of traffic calming poll return rate",
-    booktabs = TRUE
-  ) 
-
-```
 Table 3 presents the sample data for the return rates of traffic calming polls from 2015 to 2023. Each row corresponds to a specific year, and the associated return rate indicates the proportion of ballots returned out of the total distributed during that year. In 2015, the return rate was 0.5617, meaning that approximately 56.17% of the distributed ballots were returned. The subsequent rows show similar return rate values for each respective year. These figures provide insights into the community's engagement and participation in the traffic calming polls over the specified time period, reflecting the level of interest or responsiveness of the residents to the survey requests in different years.
 
 Figure 3 illustrates a scatter plot based on the data presented in Table 3, depicting the relationship between the years (ranging from 2015 to 2023) and the corresponding return rates of traffic calming polls. The scatter plot visually represents each year's return rate as a data point on the graph. Additionally, a negative linear regression model has been fitted to the data points, suggesting a decreasing trend in the return rates over the specified time period.
 
 The downward-sloping regression line indicates that as the years progress, there is a tendency for a decline in the proportion of returned ballots concerning traffic calming polls. This negative correlation suggests that, on average, the community's responsiveness to the polls has decreased over the observed years. The scatter plot, along with the fitted regression line, provides a visual representation of the statistical relationship between the temporal aspect and the return rates, offering valuable insights into the evolving dynamics of community participation in these specific polls.
 
-## Discussion
-This research investigates the intricate relationship of community engagement in traffic calming measures, examining three pivotal elements: support rate, ballot return rate, and the linear models associated with each over the years.  Table 2 illustrates a notable upward trend in the favorability of traffic calming from 2015 to 2023.  However, Table 3 reveals a concerning decline in ballot return rates over the same period.  These trends are vividly represented in Figures 2 and 3, showcasing positive and negative linear regression models, respectively.
+## Results
+The study analyzed traffic calming initiatives in Toronto from 2015 to 2023, utilizing data obtained from the Open Data Toronto Portal.  The summarized poll data from 2015, presented in Table 1, offered insights into the preferences and responses of the community regarding various neighborhood modifications.  The trend of in-favor rates of traffic calming measures from 2015 to 2023 was examined, as shown in Table 2.  The data revealed fluctuations in community support over the years, with an overall upward trend. In 2015, the in-favor rate was 0.7667, peaking in 2021 at 0.9322, before slightly dropping to 0.7670 in 2023. Figure 1 depicted this trend through a scatter plot, illustrating a positive linear relationship between the years and in-favor rates.  Additionally, Figure 2 displayed a linear regression model, confirming the increasing community support for traffic calming initiatives over time.
 
-The positive linear model for support rates (see Figure 2) suggests a growing support of traffic calming measures within the community. This may be attributed to an increased awareness of the positive impact of such initiatives on public safety and urban well-being.  The gradual rise in support implies a satisfaction with the effectiveness of implemented traffic calming measures, meeting with the hypothesis that the public recognizes and appreciates the positive outcomes of these initiatives over time.
+Furthermore, trends in ballot return rates of traffic calming polls from 2015 to 2023 were examined and presented in Table 3.  The data indicated a decreasing trend in the proportion of returned ballots over the specified period.  For instance, in 2015, the return rate was 0.5617, declining steadily thereafter.  Figure 3 visually represented this trend through a scatter plot, along with a fitted negative linear regression model, highlighting the diminishing community responsiveness to the polls over time.
+
+In conclusion, the results suggested a growing support for traffic calming measures in Toronto, accompanied by a decline in community engagement in the polling process.  While the positive linear relationship between the years and in-favor rates indicated an increasing recognition of the benefits of traffic calming initiatives, the decreasing return rates of ballots underscored the need for innovative approaches to enhance community participation in decision-making processes related to neighborhood changes.
+
+
+## Discussion
+This research investigates the intricate relationship of community engagement in traffic calming measures, examining three pivotal elements: support rate, ballot return rate, and the linear models associated with each over the years. Table 2 illustrates a notable upward trend in the favor ability of traffic calming from 2015 to 2023. However, Table 3 reveals a concerning decline in ballot return rates over the same period. These trends are vividly represented in Figures 2 and 3, showcasing positive and negative linear regression models, respectively.
+
+The positive linear model for support rates (see Figure 2) suggests a growing support of traffic calming measures within the community. This may be attributed to an increased awareness of the positive impact of such initiatives on public safety and urban well-being. The gradual rise in support implies a satisfaction with the effectiveness of implemented traffic calming measures, meeting with the hypothesis that the public recognizes and appreciates the positive outcomes of these initiatives over time.
 
 On the other hand, the negative linear model for ballot return rates (see Figure 3) raises concerns about the diminishing participation of the community in the polling process.  This decline may stem from several factors, including potential voter fatigue, a lack of impact from individual votes, or changes in the way discussions and votes on traffic calming issues are conducted. Over time, the novelty of these discussions diminishes, and discussions and votes on the issue may gradually lose their novelty, potentially leading to less enthusiasm among community members to actively participate in the decision-making process.
 
 The contrasting trends in support rates and ballot return rates prompt a critical examination of the potential interplay between satisfaction with implemented measures and sustained community engagement.  While the public may be increasingly satisfied with the effectiveness of traffic calming measures, the declining ballot return rates suggest a need for innovative approaches to revitalize community involvement in the decision-making process. Policymakers should consider adapting communication strategies, introducing new discussion formats, or addressing issues related to voter fatigue to ensure continued active participation.
 
-In conclusion, the research highlights a complex relationship between increasing support for traffic calming and declining ballot return rates. The satisfaction of the public with implemented measures appears to be growing, but the engagement in the polling process declines. Future studies should delve deeper into the specific variables affecting these trends and explore strategies to enhance and maintain community participation in shaping local policies. To fully understand these correlations, further investigation needs to be conducted in the future into the demographics, socio-economic factors, and local context (Butler 2007). The findings could be significant for city planning and policymaking, as they emphasize the importance of making regulatory decisions meet with community engagements. Hopefully the future urban plannings and policy makings will all prioritize community preferences and satisfaction (Ostad-Ali-Askari 2021). 
+In conclusion, the research reveals a complex relationship between increasing support for traffic calming and declining ballot return rates. The satisfaction of the public with implemented measures appears to be growing, which highlights a growing recognition of the benefits of such measures among Toronto residents and businesses.  However, the engagement in the polling process diminishes. This contrast reflects the need for policymakers to adopt efficient strategies to revitalize community engagement and ensure that regulatory decisions align with community preferences and satisfaction.  Future studies should make a deeper examination on the specific variables affecting these trends such as voter fatigue and explore the specific factors influencing these trends. Policymakers are expected to develop targeted interventions aimed at enhancing community participation in shaping local policies.  To fully understand these correlations between these variables, further investigation needs to be conducted in the future into the demographics, socio-economic factors, and local context [@Butler2007]. The findings could be significant for city planning and policy making, as they emphasize the importance of aligning regulatory decisions with community engagements. Hopefully the future urban plannings and policy makings will all prioritize community preferences and satisfaction [@Ostad-Ali-Askari2021]. 
 
 {{< pagebreak >}}
 ## References{.unnumbered}
-
-Arel-Bundock, Vincent. 2022. “modelsummary: Data and Model Summaries in R.” Journal of Statistical Software 103 (1): 1–23. https://doi.org/10.18637/jss.v103.i01.
-
-Butler, Peter. 2007. Polling and Public Opinion: A Canadian Perspective. Published by University of Toronto Press. P. 256. https://www.jstor.org/stable/10.3138/9781442685482.
-
-Goodrich, Ben, Jonah Gabry, Imad Ali, and Sam Brilleman. 2023. “rstanarm: Bayesian applied regression modeling via Stan.” https://mc-stan.org/rstanarm.
-
-
 

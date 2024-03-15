@@ -1,10 +1,21 @@
+#### Preamble ####
+# Purpose: Save the models.
+# Author: Bolin Shen
+# Date: March 3 2024
+# Contact: bolin.shen@mail.utoronto.ca
+# License: MIT
+
 #### Workspace setup ####
 library(opendatatoronto)
 library(dplyr)
 library(tidyverse)
+library(here)
 
-
-
+#### Read data ####
+summarized_poll_data = read_csv(
+  file = here("data/summarized_poll_data.csv"),
+  show_col_types = FALSE
+)
 
 # Filter the data by application for, extract the rows that has "Traffic Calming" as its application and group by year
 traffic_calming_data <- 
