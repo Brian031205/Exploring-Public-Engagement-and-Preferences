@@ -10,4 +10,4 @@ The repo is structured as:
 -   `script` contains the R scripts used to simulate, download, clean, and test data.
 -   `model` contains the model used in this paper.
 # LLMs
-## I did not use LLMs.
+I did not use LLMs.
