@@ -9,5 +9,5 @@ The repo is structured as:
 -   `paper` contains the Quarto document and reference bibliography file, as well as the PDF of the paper.
 -   `script` contains the R scripts used to simulate, download, clean, and test data.
 -   `model` contains the model used in this paper.
-# LLMs
+## LLMs
 I did not use LLMs.
